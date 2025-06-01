@@ -11,7 +11,7 @@ class TaskRepository:
 
             task = TaskOrm(**task_dict)
             session.add(task)
-            await session.flush
+            await session.flush()
             await session.commit()
             return task.id
 
@@ -21,6 +21,6 @@ class TaskRepository:
         async with new_session() as session:
             query = select(TaskOrm)
             result = await session.execute(query)
-            task_models = result.scalars.all()
+            task_models = result.scalars().all()
             tasks_schemas =[STaskAdd.model_validate(task_model) for task_model in task_models]
             return task_models
