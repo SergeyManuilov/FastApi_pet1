@@ -25,6 +25,7 @@ sudo apt-get update
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+#для запуска
 docker build . --tag fastapi_app
 
 docker run -p 80:80 fastapi_app
